@@ -38,7 +38,7 @@ public class App {
 
         try {
             if (System.getenv("DATABASE_URL") == null) {
-                dbUri = new URI("postgres://localhost:5432/wildlife_tracker");
+                dbUri = new URI("postgres://localhost:5432/newsportal;");
                 sql2o = new Sql2o(connectionStr,"moringa","password");
 
             } else {
