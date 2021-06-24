@@ -8,4 +8,6 @@ public interface User {
     User findUserById(int id);
     void updateUser(User user, String name, String position,String role,int departmentId);
     void clearAllUsers();
+
+    int getDepartmentId();
 }
