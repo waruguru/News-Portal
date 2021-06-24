@@ -1,6 +1,7 @@
 package MODELS;
 
 import java.sql.Timestamp;
+import java.util.Objects;
 
 public class News {
     private int id;
@@ -57,4 +58,16 @@ public class News {
         this.postdate = postdate;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        News news = (News) o;
+        return id == news.id && userid == news.userid && Objects.equals(type, news.type) && Objects.equals(content, news.content) && Objects.equals(postdate, news.postdate);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, userid, type, content, postdate);
+    }
 }
