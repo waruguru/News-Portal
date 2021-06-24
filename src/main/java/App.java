@@ -1,6 +1,7 @@
 import DAO.Sql2oDepartmentDao;
 import DAO.Sql2oNewsDao;
 import DAO.Sql2oUserDao;
+import DAO.User;
 import MODELS.Department;
 import MODELS.DepartmentNews;
 import MODELS.News;
@@ -11,6 +12,8 @@ import org.sql2o.Sql2o;
 
 import java.net.URI;
 import java.net.URISyntaxException;
+
+import static spark.Spark.post;
 
 public class App {
     private static Sql2oNewsDao newsDao;
@@ -140,6 +143,9 @@ public class App {
             //res.type("application/json");
         });
 
+    }
+
+    private static void port(Integer port) {
     }
 
 }

@@ -2,6 +2,7 @@ package DAO;
 
 import MODELS.DepartmentNews;
 import MODELS.News;
+import org.sql2o.Connection;
 import org.sql2o.Sql2o;
 
 import java.util.ArrayList;

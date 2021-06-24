@@ -66,4 +66,54 @@ public class Sql2oUserDao implements User{
             con.createQuery(sql).executeUpdate();
         }
     }
+
+    @Override
+    public int getDepartmentId() {
+        return 0;
+    }
+
+    @Override
+    public String getName() {
+        return null;
+    }
+
+    @Override
+    public String getPosition() {
+        return null;
+    }
+
+    @Override
+    public String getRole() {
+        return null;
+    }
+
+    @Override
+    public void setName(String name) {
+
+    }
+
+    @Override
+    public void setPosition(String position) {
+
+    }
+
+    @Override
+    public void setRole(String role) {
+
+    }
+
+    @Override
+    public void setDepartmentId(int departmentId) {
+
+    }
+
+    @Override
+    public int getId() {
+        return 0;
+    }
+
+    @Override
+    public void setId(int id) {
+
+    }
 }

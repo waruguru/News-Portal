@@ -10,4 +10,22 @@ public interface User {
     void clearAllUsers();
 
     int getDepartmentId();
+
+    String getName();
+
+    String getPosition();
+
+    String getRole();
+
+    void setName(String name);
+
+    void setPosition(String position);
+
+    void setRole(String role);
+
+    void setDepartmentId(int departmentId);
+
+    int getId();
+
+    void setId(int id);
 }

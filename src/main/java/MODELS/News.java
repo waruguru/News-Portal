@@ -70,4 +70,11 @@ public class News {
     public int hashCode() {
         return Objects.hash(id, userid, type, content, postdate);
     }
+
+    public int getUserId() {
+        return userid;
+    }
+
+    public void setUserId(int userId) {
+    }
 }

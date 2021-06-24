@@ -1,5 +1,11 @@
 package dao;
 
+import DAO.Sql2oDepartmentDao;
+import DAO.Sql2oNewsDao;
+import DAO.Sql2oUserDao;
+import DAO.User;
+import MODELS.Department;
+import MODELS.DepartmentNews;
 import models.Department;
 import models.DepartmentNews;
 import models.User;
@@ -15,7 +21,7 @@ import static org.junit.Assert.*;
 
 public class Sql2oDepartmentDaoTest {
 
-    private static  Sql2oDepartmentDao dptDao;
+    private static Sql2oDepartmentDao dptDao;
     private static Sql2oUserDao userDao;
     private static Sql2oNewsDao newsDao;
     private static Connection con;
@@ -192,7 +198,7 @@ public class Sql2oDepartmentDaoTest {
     }
 
     private User setupUser(){
-        return new User(1,"Ann","Senior","CFO",1);
+        return new User(1,"Joyce","Senior","CFO",1);
     }
 
     private DepartmentNews setupDepartmentNews(){

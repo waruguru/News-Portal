@@ -1,7 +1,8 @@
 package dao;
 
-import models.DepartmentNews;
-import models.News;
+import DAO.Sql2oNewsDao;
+import MODELS.DepartmentNews;
+import MODELS.News;
 import org.junit.*;
 import org.sql2o.Connection;
 import org.sql2o.Sql2o;
@@ -14,7 +15,7 @@ import static org.junit.Assert.*;
 
 public class Sql2oNewsDaoTest {
 
-    private static  Sql2oNewsDao newsDao;
+    private static Sql2oNewsDao newsDao;
     private static Connection con;
     @BeforeClass
     public static void setUp() throws Exception {
