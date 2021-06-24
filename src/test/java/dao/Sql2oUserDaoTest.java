@@ -1,6 +1,7 @@
 package dao;
 
-import models.User;
+import DAO.Sql2oUserDao;
+import MODELS.User;
 import org.junit.*;
 import org.sql2o.Connection;
 import org.sql2o.Sql2o;
@@ -11,7 +12,7 @@ import static org.junit.Assert.*;
 
 public class Sql2oUserDaoTest {
 
-    private static  Sql2oUserDao userDao;
+    private static Sql2oUserDao userDao;
     private static Connection con;
     @BeforeClass
     public static void setUp() throws Exception {
@@ -107,5 +108,5 @@ public class Sql2oUserDaoTest {
         assertEquals(0, userDao.getAllUsers().size());
     }
 
-    private User setUpUser(){return  new User(0,"Ann Lyn","Junior","Admin",1); }
+    private User setUpUser(){return  new User(0,"waruguru","Junior","Admin",1); }
 }

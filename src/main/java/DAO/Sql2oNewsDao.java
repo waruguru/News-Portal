@@ -8,7 +8,9 @@ import org.sql2o.Sql2o;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Sql2oNewsDao implements  NewsDao{
+public class Sql2oNewsDao implements NewsDao {
+
+
     private final Sql2o sql2o;
     public static final String GENERAL_NEWS="general";
     public static final String DEPARTMENT_NEWS="department";
@@ -64,15 +66,15 @@ public class Sql2oNewsDao implements  NewsDao{
     @Override
     public void addDepartmentNews(DepartmentNews dptNews) {
         String sql =" insert into news (userId,type,content,postdate,departmentId) values (:userId,:type,:content,now(),:departmentId) ";
-        try(Connection con = sql2o.open()){
+         try(Connection con = sql2o.open()){
             int id = (int)  con.createQuery(sql,true)
-                    .addParameter("userId", dptNews.getUserId())
-                    .addParameter("type",dptNews.getType())
-                    .addParameter("content",dptNews.getContent())
-                    .addParameter("departmentId",dptNews.getDepartmentId())
+                     .addParameter("userId", dptNews.getUserId())
+                     .addParameter("type",dptNews.getType())
+                     .addParameter("content",dptNews.getContent())
+                     .addParameter("departmentId",dptNews.getDepartmentId())
                     .executeUpdate().getKey();
             dptNews.setId(id);
-        }
+         }
     }
 
     @Override
@@ -103,13 +105,13 @@ public class Sql2oNewsDao implements  NewsDao{
     public void updateGeneralNews(News news, int userId, String content) {
         String sql = "update news set (userId, content) = (:userId, :content)  where id=:id ";
         try(Connection con = sql2o.open()) {
-            con.createQuery(sql)
-                    .addParameter("userId",userId)
-                    .addParameter("content",content)
-                    .addParameter("id",news.getId())
-                    .executeUpdate();
-            news.setUserId(userId);
-            news.setContent(content);
+             con.createQuery(sql)
+                     .addParameter("userId",userId)
+                     .addParameter("content",content)
+                     .addParameter("id",news.getId())
+                     .executeUpdate();
+             news.setUserId(userId);
+             news.setContent(content);
         }
 
     }
@@ -157,63 +159,4 @@ public class Sql2oNewsDao implements  NewsDao{
                     .executeUpdate();
         }
     }
-//    @Override
-//    public List<News> getAllNews() {
-//        return null;
-//    }
-//
-//    @Override
-//    public List<News> getGeneralNews() {
-//        return null;
-//    }
-//
-//    @Override
-//    public List<DepartmentNews> getDepartmentNews() {
-//        return null;
-//    }
-//
-//    @Override
-//    public void addGeneralNews(News news) {
-//
-//    }
-//
-//    @Override
-//    public void addDepartmentNews(DepartmentNews dptNews) {
-//
-//    }
-//
-//    @Override
-//    public News findGeneralNewsById(int id) {
-//        return null;
-//    }
-//
-//    @Override
-//    public DepartmentNews findDepartmentNewsById(int id) {
-//        return null;
-//    }
-//
-//    @Override
-//    public void updateGeneralNews(News news, int userId, String content) {
-//
-//    }
-//
-//    @Override
-//    public void updateDepartmentNews(DepartmentNews dptNews, int userId, String content, int departmentId) {
-//
-//    }
-//
-//    @Override
-//    public void clearAllNews() {
-//
-//    }
-//
-//    @Override
-//    public void clearGeneralNews() {
-//
-//    }
-//
-//    @Override
-//    public void clearDepartmentNews() {
-//
-//    }
 }

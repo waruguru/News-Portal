@@ -3,12 +3,9 @@ package dao;
 import DAO.Sql2oDepartmentDao;
 import DAO.Sql2oNewsDao;
 import DAO.Sql2oUserDao;
-import DAO.User;
 import MODELS.Department;
 import MODELS.DepartmentNews;
-import models.Department;
-import models.DepartmentNews;
-import models.User;
+import MODELS.User;
 import org.junit.*;
 import org.sql2o.Connection;
 import org.sql2o.Sql2o;
@@ -198,10 +195,10 @@ public class Sql2oDepartmentDaoTest {
     }
 
     private User setupUser(){
-        return new User(1,"Joyce","Senior","CFO",1);
+        return new User(1,"Ann","Senior","CFO",1);
     }
 
     private DepartmentNews setupDepartmentNews(){
-        return new DepartmentNews(1,1,Sql2oNewsDao.DEPARTMENT_NEWS,"Oceans",new Timestamp(new Date().getTime()),1);
+        return new DepartmentNews(1,1, Sql2oNewsDao.DEPARTMENT_NEWS,"Oceans",new Timestamp(new Date().getTime()),1);
     }
 }

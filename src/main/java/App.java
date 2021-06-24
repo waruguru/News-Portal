@@ -1,36 +1,37 @@
 import DAO.Sql2oDepartmentDao;
 import DAO.Sql2oNewsDao;
 import DAO.Sql2oUserDao;
-import DAO.User;
 import MODELS.Department;
 import MODELS.DepartmentNews;
 import MODELS.News;
+import MODELS.User;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.sql2o.Connection;
 import org.sql2o.Sql2o;
-
+import com.google.gson.Gson;
 import java.net.URI;
 import java.net.URISyntaxException;
 
-import static spark.Spark.post;
+import static spark.Spark.*;
 
 public class App {
+
     private static Sql2oNewsDao newsDao;
     private static Sql2oDepartmentDao dptDao;
     private static Sql2oUserDao userDao;
-    private static Sql2o sql2o;
+    private static  Sql2o sql2o;
     private static URI dbUri;
     private static Logger logger = LoggerFactory.getLogger(App.class);
     private static Gson gson = new Gson();
-    private  static Connection con;
+    private  static  Connection con;
 
     public static void main(String[] args) {
 
         ProcessBuilder process = new ProcessBuilder();
 
         Integer port = (process.environment().get("PORT") != null) ?
-                Integer.parseInt(process.environment().get("PORT")):7654;
+                        Integer.parseInt(process.environment().get("PORT")):7654;
         port(port);
 
         String connectionStr="jdbc:postgresql://localhost:5432/newsportal";
@@ -38,7 +39,7 @@ public class App {
         try {
             if (System.getenv("DATABASE_URL") == null) {
                 dbUri = new URI("postgres://localhost:5432/wildlife_tracker");
-                sql2o = new Sql2o(connectionStr,"pkminor","password");
+                sql2o = new Sql2o(connectionStr,"moringa","password");
 
             } else {
 
@@ -57,9 +58,9 @@ public class App {
 
         con = sql2o.open();
 
-        newsDao = new Sql2oNewsDao(sql2o);
-        dptDao = new Sql2oDepartmentDao(sql2o);
-        userDao = new Sql2oUserDao(sql2o);
+       newsDao = new Sql2oNewsDao(sql2o);
+       dptDao = new Sql2oDepartmentDao(sql2o);
+       userDao = new Sql2oUserDao(sql2o);
 
         staticFileLocation("/public");
 
@@ -124,8 +125,8 @@ public class App {
             newsDao.addGeneralNews(news);
             res.status(201);
             res.type("application/json");
-            res.redirect("/news/general");
-            return null; //gson.toJson(news);
+             res.redirect("/news/general");
+             return null; //gson.toJson(news);
         });
         post("/DepartmentNews/new", "application/json", (req,res)->{
             DepartmentNews dnews = gson.fromJson(req.body(), DepartmentNews.class);
@@ -140,12 +141,8 @@ public class App {
 
         //FILTERS
         after((req, res) ->{
-            //res.type("application/json");
+
         });
 
     }
-
-    private static void port(Integer port) {
-    }
-
 }

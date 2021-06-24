@@ -6,6 +6,7 @@ import MODELS.News;
 import java.util.List;
 
 public interface NewsDao {
+
     List<News> getAllNews();
     List<News> getGeneralNews();
     List<DepartmentNews> getDepartmentNews();
