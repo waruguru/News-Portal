@@ -1,6 +1,7 @@
 package MODELS;
 
 import java.sql.Timestamp;
+import java.util.Objects;
 
 public class DepartmentNews extends News{
     private int departmentId;
@@ -19,4 +20,17 @@ public class DepartmentNews extends News{
         this.departmentId = departmentId;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        if (!super.equals(o)) return false;
+        DepartmentNews that = (DepartmentNews) o;
+        return departmentId == that.departmentId;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(super.hashCode(), departmentId);
+    }
 }
